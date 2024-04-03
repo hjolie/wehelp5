@@ -148,7 +148,7 @@ header {
     grid-area: title10;
 }
 
-@media (min-width: 601px) and (max-width: 1200px) {
+@media only screen and (max-width: 1200px) {
     #content-container {
         width: 90vw;
         grid-template-areas:
@@ -161,7 +161,7 @@ header {
     }
 }
 
-@media (min-width: 361px) and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     #open-icon,
     #close-icon {
         display: block;
