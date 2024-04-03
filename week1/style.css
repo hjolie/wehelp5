@@ -5,6 +5,10 @@
     font-size: 20px;
 }
 
+body {
+    height: auto;
+}
+
 header {
     display: flex;
     flex-direction: column;
