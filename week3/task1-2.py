@@ -81,12 +81,12 @@ def get_data(url):
         if titles[i].a != None:
             article_title = titles[i].a.string
             article_link = "https://www.ptt.cc" + titles[i].find("a")["href"]
-            pushlish_time = get_time(article_link)
+            publish_time = get_time(article_link)
             if likes[i].span != None:
                 like_count = likes[i].span.string
             else:
                 like_count = "0"
-            result_list.append([article_title, like_count, pushlish_time])
+            result_list.append([article_title, like_count, publish_time])
 
     next_link = root.find("a", string="‹ 上頁")
     return next_link["href"]

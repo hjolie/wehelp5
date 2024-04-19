@@ -1,0 +1,259 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+#header-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#menu-items {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+#menu-items li {
+    margin-left: 20px;
+}
+
+#open-icon,
+#close-icon {
+    display: none;
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#header-message {
+    margin-bottom: 40px;
+    background-color: skyblue;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#header-message p {
+    font-size: 40px;
+}
+
+#spot-container-3-columns {
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-row: 50px;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "promotion1 promotion2 promotion2 promotion3 promotion3";
+}
+
+.promotion1 {
+    grid-area: promotion1;
+}
+.promotion2 {
+    grid-area: promotion2;
+}
+.promotion3 {
+    grid-area: promotion3;
+}
+
+#spot-container-10-columns,
+#load-more-container {
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-rows: repeat(2, 200px);
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+}
+
+#load-more-container {
+    margin-bottom: 50px;
+}
+
+.promotion-item {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    background-color: skyblue;
+}
+.promotion-image {
+    height: 100%;
+    width: 80px;
+    /* background-image: url("img/railway.jpg"); */
+    background-position: left;
+    background-size: auto 100%;
+}
+.promotion-item p {
+    padding-left: 10px;
+}
+
+.title-item {
+    position: relative;
+}
+.title-image {
+    /* background-image: url("img/railway.jpg"); */
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+}
+.star-icon {
+    color: gold;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.title-item p {
+    width: 100%;
+    background-color: rgba(178, 253, 180, 0.5);
+    text-align: center;
+    padding: 5px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#load-more-btn {
+    width: 150px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    padding: 5px 0;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(178, 253, 180, 0.5);
+    border: solid 5px rgb(178, 253, 180);
+}
+#load-more-btn:hover {
+    background-color: rgb(178, 253, 180);
+}
+
+@media screen and (max-width: 1200px) {
+    #spot-container-3-columns {
+        width: 90vw;
+        grid-template-rows: repeat(2, 50px);
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+            "promotion1 promotion1 promotion2 promotion2"
+            "promotion3 promotion3 promotion3 promotion3";
+    }
+
+    #spot-container-10-columns {
+        width: 90vw;
+        grid-template-rows: repeat(2, 200px);
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+            "title1 title2 title3 title4"
+            "title5 title6 title7 title8"
+            "title9 title9 title10 title10";
+    }
+
+    .title1 {
+        grid-area: title1;
+    }
+    .title2 {
+        grid-area: title2;
+    }
+    .title3 {
+        grid-area: title3;
+    }
+    .title4 {
+        grid-area: title4;
+    }
+    .title5 {
+        grid-area: title5;
+    }
+    .title6 {
+        grid-area: title6;
+    }
+    .title7 {
+        grid-area: title7;
+    }
+    .title8 {
+        grid-area: title8;
+    }
+    .title9 {
+        grid-area: title9;
+    }
+    .title10 {
+        grid-area: title10;
+    }
+
+    #load-more-container {
+        width: 90vw;
+        grid-template-rows: repeat(2, 200px);
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #open-icon,
+    #close-icon {
+        display: block;
+    }
+
+    #menu-items {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 50vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: -50vw;
+        background-color: white;
+        z-index: 10;
+        transition: right 0.5s;
+    }
+    #menu-items li {
+        margin: 0;
+        margin-top: 20px;
+    }
+
+    #spot-container-3-columns {
+        width: 90vw;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "promotion1"
+            "promotion2"
+            "promotion3";
+    }
+
+    #spot-container-10-columns {
+        width: 90vw;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "title1"
+            "title2"
+            "title3"
+            "title4"
+            "title5"
+            "title6"
+            "title7"
+            "title8"
+            "title9"
+            "title10";
+    }
+
+    #load-more-container {
+        width: 90vw;
+        grid-template-columns: 1fr;
+    }
+}
