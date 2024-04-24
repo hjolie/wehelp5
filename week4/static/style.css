@@ -30,6 +30,12 @@ form {
     align-items: center;
 }
 
+#signin-form {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: #133966 solid 1px;
+}
+
 .input-container {
     margin-bottom: 10px;
     font-size: 20px;

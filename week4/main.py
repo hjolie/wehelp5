@@ -54,3 +54,8 @@ async def get_signout(session: dict = Depends(get_session)):
 @app.get("/error")
 async def get_error(request: Request, message: str):
     return templates.TemplateResponse("error.html", {"request": request, "message": message})
+
+@app.get("/square/{number}")
+async def get_square(request: Request, number: int):
+    squared_number = number ** 2
+    return templates.TemplateResponse("square.html", {"request": request, "squared_number": squared_number})
