@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+<h1>歡迎光臨，請輸入帳號密碼</h1>
+<h2>登入系統</h2>
+<form action="/signin" id="form" method="post">
+    <div class="input-container">
+        <label for="username">帳號</label>
+        <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+        />
+    </div>
+    <div class="input-container">
+        <label for="password">密碼</label>
+        <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+        />
+    </div>
+    <div class="input-container">
+        <label for="checkbox">同意條款</label>
+        <input type="checkbox" name="checkbox" id="checkbox" />
+    </div>
+    <button type="submit" id="signin-btn">登入</button>
+</form>
+{% endblock%}
