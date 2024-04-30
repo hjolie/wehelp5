@@ -44,7 +44,11 @@
 1. select count(\*) from member;
 2. select sum(follower_count) from member;
 3. select avg(follower_count) from member;
-4. select avg(follower_count) from member order by follower_count desc limit 2 offset 0;
+4. select avg(follower_count) from  
+   -> (select follower_count from member  
+   -> order by follower_count desc  
+   -> limit 2)  
+   -> as follower_count_top2;
 
 ![](task4/4-1.png)
 ![](task4/4-2.png)
