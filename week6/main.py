@@ -86,7 +86,7 @@ async def get_member(request: Request, session: dict = Depends(get_session)):
     
     display_name = session["name"]
     
-    message_query = ("SELECT member.name, message.content FROM message "
+    message_query = ("SELECT member.id, member.name, message.id, message.content FROM message "
                      "join member on message.member_id = member.id "
                      "order by message.time desc "
                      "limit 5")
@@ -112,6 +112,26 @@ async def post_message(request: Request, message: Annotated[str, Form()] = None,
     
     redirect_url = request.url_for("get_member")
     return RedirectResponse(redirect_url, status_code=302)
+
+@app.post("/deleteMessage")
+async def post_delete_message(request: Request, member_id: Annotated[int, Form()] = None, message_id: Annotated[int, Form()] = None, session: dict = Depends(get_session)):
+    if session == {}:
+        return RedirectResponse(url="/", status_code=302)
+    
+    member_id_from_message = member_id
+    member_id_from_session = session["member_id"]
+
+    if member_id_from_message == member_id_from_session:
+        delete_query = ("DELETE FROM message "
+                        "WHERE message.id = %s")
+        cursor.execute(delete_query, (message_id,))
+
+        redirect_url = request.url_for("get_member")
+        return RedirectResponse(redirect_url, status_code=302)
+    else:
+        error_message = "您非留言者本人，無法刪除該訊息"
+        redirect_url = request.url_for("get_error").include_query_params(message=error_message)
+        return RedirectResponse(redirect_url, status_code=302)
 
 @app.get("/signout")
 async def get_signout(session: dict = Depends(get_session)):

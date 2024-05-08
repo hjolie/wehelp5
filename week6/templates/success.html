@@ -15,9 +15,26 @@
     </form>
 </div>
 
-{% for user, message in result %}
+{% for member_id, user, message_id, message in result %} {% if user == name %}
+<form
+    action="/deleteMessage"
+    method="post"
+    id="message-container"
+    class="message-container"
+>
+    <h2>{{ user }}:</h2>
+    <p>{{ message }}</p>
+    <input type="hidden" name="member_id" value="{{ member_id }}" />
+    <input type="hidden" name="message_id" value="{{ message_id }}" />
+    <button type="submit" class="delete-btn">X</button>
+</form>
+
+{% else %}
 <div class="message-container">
     <h2>{{ user }}:</h2>
     <p>{{ message }}</p>
 </div>
-{% endfor %} {% endblock%}
+
+{% endif %} {% endfor %}
+<script src="{{ url_for('static', path='/delete.js') }}"></script>
+{% endblock%}
